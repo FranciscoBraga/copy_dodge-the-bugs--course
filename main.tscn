@@ -1,21 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpkt7steg8udl"]
+[gd_scene load_steps=5 format=3 uid="uid://cpkt7steg8udl"]
 
 [ext_resource type="PackedScene" uid="uid://bn2irdiniawwf" path="res://prefabs/player.tscn" id="1_eoejg"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_lahnw"]
 [ext_resource type="PackedScene" uid="uid://diq74rat1nt4v" path="res://prefabs/enemy.tscn" id="2_65j1b"]
 
-[node name="main" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_o6vbk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
 
-[node name="enemy4" parent="." instance=ExtResource("2_65j1b")]
-position = Vector2(349, 422)
+[node name="main" type="Node2D"]
+script = ExtResource("1_lahnw")
+bug_scene = ExtResource("2_65j1b")
 
 [node name="player" parent="." instance=ExtResource("1_eoejg")]
 position = Vector2(230, 292)
 
-[node name="enemy" parent="." instance=ExtResource("2_65j1b")]
-position = Vector2(139, 163)
+[node name="BugTimer" type="Timer" parent="."]
+wait_time = 0.5
 
-[node name="enemy2" parent="." instance=ExtResource("2_65j1b")]
-position = Vector2(341, 250)
+[node name="ScoreTimer" type="Timer" parent="."]
 
-[node name="enemy3" parent="." instance=ExtResource("2_65j1b")]
-position = Vector2(146, 474)
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StarPosition" type="Marker2D" parent="."]
+position = Vector2(240, 360)
+
+[node name="BugPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_o6vbk")
+
+[node name="BugPathLocation" type="PathFollow2D" parent="BugPath"]
+
+[connection signal="hit" from="player" to="." method="game_over"]
+[connection signal="timeout" from="BugTimer" to="." method="_on_bug_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
