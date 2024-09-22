@@ -7,7 +7,7 @@ const  SPEED := 400
 @onready var screen_size = get_viewport_rect().size
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,5 +40,5 @@ func start_pos(pos):
 	position = pos
 	show()
 	collision.disabled = false
-	hide()
+
 	

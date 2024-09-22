@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpkt7steg8udl"]
+[gd_scene load_steps=3 format=3 uid="uid://cpkt7steg8udl"]
 
 [ext_resource type="PackedScene" uid="uid://bn2irdiniawwf" path="res://prefabs/player.tscn" id="1_eoejg"]
+[ext_resource type="PackedScene" uid="uid://diq74rat1nt4v" path="res://prefabs/enemy.tscn" id="2_65j1b"]
 
 [node name="main" type="Node2D"]
 
+[node name="enemy4" parent="." instance=ExtResource("2_65j1b")]
+position = Vector2(349, 422)
+
 [node name="player" parent="." instance=ExtResource("1_eoejg")]
 position = Vector2(230, 292)
+
+[node name="enemy" parent="." instance=ExtResource("2_65j1b")]
+position = Vector2(139, 163)
+
+[node name="enemy2" parent="." instance=ExtResource("2_65j1b")]
+position = Vector2(341, 250)
+
+[node name="enemy3" parent="." instance=ExtResource("2_65j1b")]
+position = Vector2(146, 474)
