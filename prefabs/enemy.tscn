@@ -35,7 +35,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_msk80"]
 radius = 20.025
 
-[node name="enemy" type="RigidBody2D"]
+[node name="enemy" type="RigidBody2D" groups=["bugs"]]
 collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_eriiu")

@@ -9,10 +9,5 @@ func _ready() -> void:
 	print(enemy_types)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_visible_screen_exited() -> void:
 	queue_free()
