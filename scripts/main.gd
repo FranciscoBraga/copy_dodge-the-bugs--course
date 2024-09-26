@@ -8,6 +8,8 @@ func game_over() -> void:
 	$BugTimer.stop()
 	$ScoreTimer.stop()
 	$HUD.show_game_over()
+	$bgMusic.stop()
+	$gameOverSound.play()
 	
 func new_game():
 	$StartTimer.start()
@@ -16,6 +18,7 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready!")
 	get_tree().call_group("bugs","queue_free")
+	$bgMusic.play()
 	
 func _on_score_timer_timeout() -> void:
 	score += 1
